@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://7ucoxuonip5i"]
+
+[ext_resource type="Script" uid="uid://d21kooer25kp0" path="res://rich_text_label.gd" id="1_v3dxv"]
+
+[node name="RichTextLabel" type="RichTextLabel"]
+offset_right = 608.0
+offset_bottom = 260.0
+text = "hellooo"
+fit_content = true
+script = ExtResource("1_v3dxv")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

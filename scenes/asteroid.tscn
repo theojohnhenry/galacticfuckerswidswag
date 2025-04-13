@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://br2thl6f60xnq"]
+
+[ext_resource type="Script" uid="uid://y12l5hggy6xv" path="res://scripts/asteroid.gd" id="1_6mo6b"]
+[ext_resource type="Texture2D" uid="uid://c4xid3k2ifdor" path="res://assets/projectiles/asterroid.png" id="2_t4se3"]
+[ext_resource type="Script" uid="uid://dopt7ymwytx8a" path="res://scripts/damagedealer.gd" id="3_t4se3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pnq5b"]
+radius = 35.0
+
+[node name="AsteroidArea" type="Area2D"]
+script = ExtResource("1_6mo6b")
+metadata/_edit_group_ = true
+
+[node name="AsteroidPicture" type="Sprite2D" parent="."]
+texture_filter = 3
+texture = ExtResource("2_t4se3")
+
+[node name="AsteroidCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -11)
+shape = SubResource("CircleShape2D_pnq5b")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="DamageDealer" type="Node" parent="."]
+script = ExtResource("3_t4se3")
+damage_amount = 70
+metadata/_custom_type_script = "uid://dopt7ymwytx8a"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://5w8aps2mvekf"]
+
+[ext_resource type="Script" uid="uid://bbv21x841f8sg" path="res://scripts/laser.gd" id="1_a7dhc"]
+[ext_resource type="Texture2D" uid="uid://cn1r1ebp3kith" path="res://assets/projectiles/laser.png" id="1_xmihv"]
+[ext_resource type="Script" uid="uid://dopt7ymwytx8a" path="res://scripts/damagedealer.gd" id="2_a7dhc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xmihv"]
+size = Vector2(6, 8)
+
+[node name="laser" type="Area2D"]
+scale = Vector2(1, 0.988253)
+script = ExtResource("1_a7dhc")
+speed = 500
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_xmihv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xmihv")
+
+[node name="DamageDealer" type="Node" parent="."]
+script = ExtResource("2_a7dhc")
+metadata/_custom_type_script = "uid://dopt7ymwytx8a"

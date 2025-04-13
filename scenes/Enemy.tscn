@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://w5uv7k5cpyjv"]
+
+[ext_resource type="Script" uid="uid://cd11kiynnakui" path="res://scripts/health.gd" id="1_3gvst"]
+[ext_resource type="Script" uid="uid://cd7ji26aoahp7" path="res://scripts/enemy.gd" id="1_55jtl"]
+[ext_resource type="Script" uid="uid://dopt7ymwytx8a" path="res://scripts/damagedealer.gd" id="3_mpr68"]
+[ext_resource type="PackedScene" uid="uid://d12p8880eh5ws" path="res://scenes/healthbar.tscn" id="4_ft8do"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_55jtl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mpr68"]
+size = Vector2(164, 166)
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_55jtl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(164, 168)
+texture = SubResource("PlaceholderTexture2D_55jtl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mpr68")
+
+[node name="Health" type="Node" parent="." node_paths=PackedStringArray("health_bar")]
+script = ExtResource("1_3gvst")
+health_bar = NodePath("../Healthbar")
+metadata/_custom_type_script = "uid://cd11kiynnakui"
+
+[node name="DamageDealer" type="Node" parent="."]
+script = ExtResource("3_mpr68")
+metadata/_custom_type_script = "uid://dopt7ymwytx8a"
+
+[node name="Healthbar" parent="." instance=ExtResource("4_ft8do")]
+position = Vector2(0, -123)

@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://c31e7qq06ceq8"]
+
+[ext_resource type="Script" uid="uid://cnikc4pn23qv2" path="res://scripts/weapon.gd" id="1_xasec"]
+[ext_resource type="PackedScene" uid="uid://5w8aps2mvekf" path="res://scenes/laser.tscn" id="2_uxn4k"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xasec"]
+
+[node name="Weapon" type="Node2D"]
+script = ExtResource("1_xasec")
+projectile_scene = ExtResource("2_uxn4k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(7.76, 16.72)
+texture = SubResource("PlaceholderTexture2D_xasec")
+
+[node name="Timer" type="Timer" parent="."]

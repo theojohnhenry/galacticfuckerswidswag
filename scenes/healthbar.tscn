@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://d12p8880eh5ws"]
+
+[ext_resource type="Script" uid="uid://b5bu60b8x5e2o" path="res://scripts/healthbar.gd" id="1_8wl12"]
+[ext_resource type="Theme" uid="uid://1xbctdd0qbkq" path="res://assets/themes/theme.tres" id="2_vjxg4"]
+
+[node name="Healthbar" type="Node2D"]
+script = ExtResource("1_8wl12")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.0
+offset_top = -9.0
+offset_right = 41.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_vjxg4")

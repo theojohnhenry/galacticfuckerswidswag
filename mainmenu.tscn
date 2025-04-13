@@ -1,0 +1,90 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmr2vrete6co3"]
+
+[ext_resource type="Script" uid="uid://bmvmhdilkhekp" path="res://scripts/mainmenu.gd" id="1_cmhrf"]
+[ext_resource type="Theme" uid="uid://1xbctdd0qbkq" path="res://assets/themes/theme.tres" id="1_d2nv2"]
+[ext_resource type="Shader" uid="uid://cyc0gy6h8tvbf" path="res://assets/shaders/asd.gdshader" id="3_igs2m"]
+[ext_resource type="Texture2D" uid="uid://bjd0u3ltvgyhg" path="res://assets/backgrounds/menubackground.png" id="3_wgsso"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3pujl"]
+shader = ExtResource("3_igs2m")
+shader_parameter/resolution = Vector2(640, 360)
+shader_parameter/scan_line_amount = 0.77
+shader_parameter/warp_amount = 0.161
+shader_parameter/noise_amount = 0.104
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.24
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.672
+shader_parameter/vignette_intensity = 0.505
+shader_parameter/aberation_amount = 0.5
+shader_parameter/roll_line_amount = 0.3
+shader_parameter/roll_speed = 1.0
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -2.0
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchor_right = 1.01333
+anchor_bottom = 1.00333
+offset_right = -8.0
+offset_bottom = -3.0
+theme = ExtResource("1_d2nv2")
+script = ExtResource("1_cmhrf")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_3pujl")
+offset_right = 603.0
+offset_bottom = 899.0
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 600.0
+offset_bottom = 904.0
+texture = ExtResource("3_wgsso")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -287.999
+offset_top = 173.0
+offset_right = 288.001
+offset_bottom = 258.0
+grow_horizontal = 2
+text = "galactic fuckers
+ wid swag"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.0
+offset_top = -50.5
+offset_right = 124.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "play"
+
+[node name="Settings" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "settings"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "quit"
+
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

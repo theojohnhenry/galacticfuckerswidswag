@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://jab3spny04l2"]
+
+[ext_resource type="Script" uid="uid://bj13msmt7x8c8" path="res://scripts/main.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://6xbavtppxtfa" path="res://scenes/player.tscn" id="2_h2yge"]
+[ext_resource type="Texture2D" uid="uid://bjd0u3ltvgyhg" path="res://assets/backgrounds/menubackground.png" id="3_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://br2thl6f60xnq" path="res://scenes/asteroid.tscn" id="3_lquwl"]
+[ext_resource type="Shader" uid="uid://cyc0gy6h8tvbf" path="res://assets/shaders/asd.gdshader" id="4_7mycd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_272bh"]
+shader = ExtResource("4_7mycd")
+shader_parameter/resolution = Vector2(640, 360)
+shader_parameter/scan_line_amount = 0.77
+shader_parameter/warp_amount = 0.161
+shader_parameter/noise_amount = 0.104
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.24
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.672
+shader_parameter/vignette_intensity = 0.505
+shader_parameter/aberation_amount = 0.5
+shader_parameter/roll_line_amount = 0.3
+shader_parameter/roll_speed = 1.0
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -2.0
+
+[node name="main" type="Node"]
+script = ExtResource("1_0xm2m")
+player_scene = ExtResource("2_h2yge")
+asteroid_scene = ExtResource("3_lquwl")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_272bh")
+offset_right = 603.0
+offset_bottom = 899.0
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_1bvp3")
